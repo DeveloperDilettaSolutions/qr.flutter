@@ -249,8 +249,8 @@ class QrPainter extends CustomPainter {
           embeddedImageStyle != null ? embeddedImageStyle.size : null;
       final imageSize = _scaledAspectSize(size, originalSize, requestedSize);
       final position = Offset(
-        (size.width - imageSize.width) / 2.0,
-        (size.height - imageSize.height) / 2.0,
+        (size.width - imageSize.width),
+        (size.height - imageSize.height),
       );
       // draw the image overlay.
       _drawImageOverlay(canvas, position, imageSize, embeddedImageStyle);
@@ -446,7 +446,7 @@ class _PaintMetrics {
   void _calculateMetrics() {
     final gapTotal = (moduleCount - 1) * gapSize;
     var pixelSize = (containerSize - gapTotal) / moduleCount;
-    _pixelSize = (pixelSize * 2).roundToDouble() / 2;
+    _pixelSize = pixelSize;
     _innerContentSize = (_pixelSize * moduleCount) + gapTotal;
     _inset = (containerSize - _innerContentSize) / 2;
   }
